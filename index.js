@@ -24,6 +24,12 @@ mongoose
   .then((lastCreatedArr) => {
     lastCreatedArr.forEach(recipe => console.log(recipe.title));
   })
+  .then(() => {
+    return Recipe.findOneAndUpdate({ title: "Rigatoni alla Genovese" }, { duration: 100 });
+  })
+  .then((updatedRecipe) => {
+    console.log(`${updatedRecipe.title} updated correctly`);
+  })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
